@@ -4,14 +4,16 @@ import { MdCall } from "react-icons/md";
 import { IoVideocam } from "react-icons/io5";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useStateProvider } from "@/context/StateContext";
 
 function ChatHeader() {
+  const [{currentChat}] = useStateProvider();
   return (
     <div className="h-16 px-4 py-3 flex justify-between items-center bg-panel-header-background z-10">
       <div className="flex items-center justify-center gap-4">
-        <Avatar type="sm" image="/avatars/2.png" />
+        <Avatar type="sm" image={currentChat?.profilePicture} />
         <div className="flex flex-col">
-          <span className="text-primary-strong">Dollar</span>
+          <span className="text-primary-strong">{currentChat?.name}</span>
           <span className="text-secondary text-sm">online/offline</span>
         </div>
       </div>
