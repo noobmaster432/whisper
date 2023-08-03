@@ -48,6 +48,7 @@ export const getAllUsers = async (req, res, next) => {
         profilePicture: true,
       },
     });
+
     const usersGroupByInitialLetter = {};
     users.forEach((user) => {
       const initialLetter = user.name[0].toUpperCase();
@@ -56,6 +57,7 @@ export const getAllUsers = async (req, res, next) => {
       }
       usersGroupByInitialLetter[initialLetter].push(user);
     });
+    
     return res.json({ msg: "Success", status: true, data: usersGroupByInitialLetter });
   } catch (error) {
     next(error);
