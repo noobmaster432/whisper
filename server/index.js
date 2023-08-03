@@ -11,6 +11,6 @@ app.use(express.json());
 
 app.use("/api/auth", AuthRoutes);
 
-const server = app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Server live on port ${process.env.PORT}`);
 });
