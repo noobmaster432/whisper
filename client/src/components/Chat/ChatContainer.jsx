@@ -2,16 +2,22 @@ import { useStateProvider } from "@/context/StateContext";
 import { calculateTime } from "@/utils/CalculateTime";
 import React from "react";
 import MessageStatus from "../common/MessageStatus";
+import ImageMessage from "./ImageMessage";
+import dynamic from "next/dynamic";
+const VoiceMessage = dynamic(() => import("./VoiceMessage"), {
+  ssr: false,
+});
+
 
 function ChatContainer() {
-  const [{ messages, currentChat, userInfo }] = useStateProvider();
+  const [{ messages, userInfo }] = useStateProvider();
   return (
     <div className="h-[80vh] w-full relative flex-grow overflow-auto custom-scrollbar">
       <div className="bg-chat-background bg-fixed h-full w-full opacity-5 fixed left-0 top-0 z-0"></div>
       <div className="mx-10 my-6 relative bottom-0 z-40 left-0">
         <div className="flex w-full">
           <div className="flex flex-col justify-end w-full gap-1 overflow-auto">
-            {messages.map((message, index) => (
+            {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${
@@ -40,6 +46,12 @@ function ChatContainer() {
                       </span>
                     </div>
                   </div>
+                )}
+                {message.type === "image" && (
+                  <ImageMessage message={message} />
+                )}
+                {message.type === "audio" && (
+                  <VoiceMessage message={message} />
                 )}
               </div>
             ))}

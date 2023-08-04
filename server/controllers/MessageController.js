@@ -1,4 +1,5 @@
 import getPrismaInstance from "../utils/PrismaClient.js";
+import { renameSync } from "fs";
 
 export const addMessage = async (req, res, next) => {
   try {
@@ -63,6 +64,60 @@ export const getMessages = async (req, res, next) => {
       return res.status(200).json({ messages });
     }
     return res.status(400).send({ message: "From and to is required" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const addImageMessage = async (req, res, next) => {
+  try {
+    if (req.file) {
+      const date = Date.now();
+      let fileName = "uploads/images/" + date + req.file.originalname;
+      renameSync(req.file.path, fileName);
+      const prisma = getPrismaInstance();
+      const { from, to } = req.query;
+      if (from && to) {
+        const message = await prisma.messages.create({
+          data: {
+            message: fileName,
+            sender: { connect: { id: parseInt(from) } },
+            receiver: { connect: { id: parseInt(to) } },
+            type: "image",
+          }
+        });
+        return res.status(201).json({ message });
+      }
+      return res.status(400).send({ message: "From and to is required" });
+    }
+    return res.status(400).send({ message: "Image is required" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const addAudioMessage = async (req, res, next) => {
+  try {
+    if (req.file) {
+      const date = Date.now();
+      let fileName = "uploads/recordings/" + date + req.file.originalname;
+      renameSync(req.file.path, fileName);
+      const prisma = getPrismaInstance();
+      const { from, to } = req.query;
+      if (from && to) {
+        const message = await prisma.messages.create({
+          data: {
+            message: fileName,
+            sender: { connect: { id: parseInt(from) } },
+            receiver: { connect: { id: parseInt(to) } },
+            type: "audio",
+          }
+        });
+        return res.status(201).json({ message });
+      }
+      return res.status(400).send({ message: "From and to is required" });
+    }
+    return res.status(400).send({ message: "Audio is required" });
   } catch (error) {
     next(error);
   }
