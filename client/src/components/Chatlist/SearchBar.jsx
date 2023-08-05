@@ -27,8 +27,8 @@ function SearchBar() {
           />
         </div>
       </div>
-      <div className="pr-5 pl-3">
-        <BsFilter className="text-panel-header-icon text-xl cursor-pointer" />
+      <div className="mr-3 p-1.5 cursor-pointer rounded-md hover:bg-background-default-hover">
+        <BsFilter className="text-panel-header-icon text-[22px]" />
       </div>
     </div>
   );
