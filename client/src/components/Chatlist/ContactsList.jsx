@@ -49,17 +49,21 @@ function ContactsList() {
         </div>
         {Object.entries(contacts).map(([initialLetter, userList]) => {
           return (
-            <div key={Date.now()+initialLetter}>
+            <div key={Date.now() + initialLetter}>
               <div className="text-teal-light pl-10 py-5">{initialLetter}</div>
-              {
-                userList.map((user) => {
-                  return (
-                    <ChatLIstItem data={user} isContactPage={true} kay={user.id} />
-                  )})
-              }
+              {userList.map((user) => {
+                return (
+                  <ChatLIstItem
+                    data={user}
+                    isContactPage={true}
+                    kay={user.id}
+                  />
+                );
+              })}
             </div>
-          )
-        })};
+          );
+        })}
+        ;
       </div>
     </div>
   );

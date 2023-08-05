@@ -8,7 +8,6 @@ const VoiceMessage = dynamic(() => import("./VoiceMessage"), {
   ssr: false,
 });
 
-
 function ChatContainer() {
   const [{ messages, userInfo }] = useStateProvider();
   return (

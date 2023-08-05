@@ -8,7 +8,7 @@ import { calculateTime } from "@/utils/CalculateTime";
 import MessageStatus from "../common/MessageStatus";
 
 function VoiceMessage({ message }) {
-  const [{ userInfo, currentChat, socket }, dispatch] = useStateProvider();
+  const [{ userInfo, currentChat }, dispatch] = useStateProvider();
   const [audioMessage, setAudioMessage] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentPlayback, setCurrentPlayback] = useState(0);
@@ -93,7 +93,12 @@ function VoiceMessage({ message }) {
       }`}
     >
       <div>
-        <Avatar type="lg" image={currentChat?.profilePicture} />
+        <Avatar
+          type="lg"
+          image={
+            message.senderId === userInfo?.id ? userInfo.profileImage : currentChat.profilePicture
+          }
+        />
       </div>
       <div className="cursor-pointer text-xl">
         {!isPlaying ? (
