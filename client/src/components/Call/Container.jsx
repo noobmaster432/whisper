@@ -73,13 +73,14 @@ function Container({ data }) {
                 localStream &&
                 streamList[0].streamID
               ) {
-                zg.destroyStream(localStream);
                 zg.stopPublishingStream(streamList[0].streamID);
+                zg.destroyStream(localStream);
                 zg.logoutRoom(data.roomId.toString());
                 dispatch({ type: reducerCases.END_CALL });
               }
             }
           );
+
           await zg.loginRoom(
             data.roomId.toString(),
             token,
@@ -121,8 +122,8 @@ function Container({ data }) {
   const endCall = () => {
     const id = data.id;
     if (zgVar && localStream && publishStream) {
-      zgVar.destroyStream(localStream);
       zgVar.stopPublishingStream(publishStream);
+      zgVar.destroyStream(localStream);
       zgVar.logoutRoom(data.roomId.toString());
     }
     if (data.callType === "voice") {

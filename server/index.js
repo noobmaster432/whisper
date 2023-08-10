@@ -23,7 +23,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
   },
 });
 
@@ -33,7 +33,17 @@ io.on("connection", (socket) => {
   
   socket.on("add-user", (userId) => {
     onlineUsers.set(userId, socket.id);
+    socket.broadcast.emit("online-users", {
+      onlineUsers: [...onlineUsers.keys()],
+    });
   });
+
+  socket.on("signout", (id) => {
+    onlineUsers.delete(id);
+    socket.broadcast.emit("online-users", {
+      onlineUsers: [...onlineUsers.keys()],
+    });
+  })
 
   socket.on("send-msg", (data) => {
     const sendUserSocket = onlineUsers.get(data.to);
