@@ -9,6 +9,31 @@ import { reducerCases } from "@/context/constants";
 
 function ChatHeader() {
   const [{currentChat}, dispatch] = useStateProvider();
+
+  const handleVoiceCall = () => {
+    dispatch({
+      type: reducerCases.SET_VOICE_CALL,
+      voiceCall: {
+        ...currentChat,
+        type: "out-going",
+        callType: "voice",
+        roomId: Date.now(),
+      },
+    });
+  }
+
+  const handleVideoCall = () => {
+    dispatch({
+      type: reducerCases.SET_VIDEO_CALL,
+      videoCall: {
+        ...currentChat,
+        type: "out-going",
+        callType: "video",
+        roomId: Date.now(),
+      },
+    });
+  }
+
   return (
     <div className="h-16 px-4 py-3 flex justify-between items-center bg-panel-header-background z-10">
       <div className="flex items-center justify-center gap-4">
@@ -19,8 +44,8 @@ function ChatHeader() {
         </div>
       </div>
       <div className="flex gap-6">
-        <MdCall className="text-panel-header-icon text-xl cursor-pointer" />
-        <IoVideocam className="text-panel-header-icon text-xl cursor-pointer" />
+        <MdCall onClick={handleVoiceCall} className="text-panel-header-icon text-xl cursor-pointer" />
+        <IoVideocam onClick={handleVideoCall} className="text-panel-header-icon text-xl cursor-pointer" />
         <BiSearchAlt2 className="text-panel-header-icon text-xl cursor-pointer" onClick={() => dispatch({ type: reducerCases.SET_MESSAGE_SEARCH })} />
         <BsThreeDotsVertical className="text-panel-header-icon text-xl cursor-pointer" />
       </div>
