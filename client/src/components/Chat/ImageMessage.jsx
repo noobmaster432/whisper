@@ -17,7 +17,7 @@ function ImageMessage({ message }) {
     >
       <div className="relative">
         <Image
-          src={`${HOST}/${message.message}`}
+          src={message.message}
           className="rounded-lg"
           alt="asset"
           height={300}

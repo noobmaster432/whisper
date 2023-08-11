@@ -38,7 +38,7 @@ function VoiceMessage({ message }) {
   }, []);
 
   useEffect(() => {
-    const audioURL = `${HOST}/${message.message}`;
+    const audioURL = `${message.message}`;
     const audio = new Audio(audioURL);
     setAudioMessage(audio);
     waveform.current.load(audioURL);
