@@ -1,4 +1,4 @@
-export const HOST = "http://localhost:5000";
+export const HOST = "https://whisper-api-chat.vercel.app";
 
 const AUTH_ROUTE = `${HOST}/api/auth`;
 const MESSAGE_ROUTE = `${HOST}/api/messages`;
