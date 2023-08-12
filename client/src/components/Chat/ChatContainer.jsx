@@ -1,6 +1,6 @@
 import { useStateProvider } from "@/context/StateContext";
 import { calculateTime } from "@/utils/CalculateTime";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MessageStatus from "../common/MessageStatus";
 import ImageMessage from "./ImageMessage";
 import dynamic from "next/dynamic";
@@ -10,6 +10,16 @@ const VoiceMessage = dynamic(() => import("./VoiceMessage"), {
 
 function ChatContainer() {
   const [{ messages, userInfo }] = useStateProvider();
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView();
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <div className="h-[80vh] w-full relative flex-grow overflow-auto custom-scrollbar">
       <div className="bg-[#0D0D0D] bg-fixed h-full w-full opacity-5 fixed left-0 top-0 z-0"></div>
@@ -50,6 +60,7 @@ function ChatContainer() {
                 {message.type === "audio" && <VoiceMessage message={message} />}
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
         </div>
       </div>

@@ -28,7 +28,6 @@ function ChatListHeader() {
     },
   ];
 
-
   const handleContactsPage = () => {
     dispatch({
       type: reducerCases.SET_CONTACTS_PAGE,

@@ -7,7 +7,7 @@ import MessageStatus from "../common/MessageStatus";
 import { FaImage, FaMicrophone } from "react-icons/fa";
 
 function ChatLIstItem({ data, isContactPage = false }) {
-  const [{ userInfo, currentChat }, dispatch] = useStateProvider();
+  const [{ userInfo }, dispatch] = useStateProvider();
   const handleContactClick = () => {
     if (!isContactPage) {
       dispatch({
