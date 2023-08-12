@@ -1,5 +1,4 @@
 import getPrismaInstance from "../utils/PrismaClient.js";
-import { renameSync } from "fs";
 import cloudinary from "../utils/cloudinary.js";
 export const addMessage = async (req, res, next) => {
   try {
@@ -10,8 +9,8 @@ export const addMessage = async (req, res, next) => {
       const newMessages = await prisma.messages.create({
         data: {
           message,
-          sender: { connect: { id: parseInt(from) } },
-          receiver: { connect: { id: parseInt(to) } },
+          sender: { connect: { id: from } },
+          receiver: { connect: { id: to } },
           messageStatus: getUser ? "delivered" : "sent",
         },
         include: { sender: true, receiver: true },
@@ -34,8 +33,8 @@ export const getMessages = async (req, res, next) => {
       const messages = await prisma.messages.findMany({
         where: {
           OR: [
-            { senderId: parseInt(from), receiverId: parseInt(to) },
-            { senderId: parseInt(to), receiverId: parseInt(from) },
+            { senderId: from, receiverId: to },
+            { senderId: to, receiverId: from },
           ],
         },
         orderBy: { id: "asc" },
@@ -45,7 +44,7 @@ export const getMessages = async (req, res, next) => {
       messages.forEach((message, index) => {
         if (
           message.messageStatus !== "read" &&
-          message.senderId === parseInt(to)
+          message.senderId === to
         ) {
           messages[index].messageStatus = "read";
           unreadMessages.push(message.id);
@@ -81,8 +80,8 @@ export const addImageMessage = async (req, res, next) => {
       const message = await prisma.messages.create({
         data: {
           message: uploadedData.secure_url,
-          sender: { connect: { id: parseInt(from) } },
-          receiver: { connect: { id: parseInt(to) } },
+          sender: { connect: { id: from } },
+          receiver: { connect: { id: to } },
           type: "image",
         },
       });
@@ -109,8 +108,8 @@ export const addAudioMessage = async (req, res, next) => {
       const message = await prisma.messages.create({
         data: {
           message: uploadedData.secure_url,
-          sender: { connect: { id: parseInt(from) } },
-          receiver: { connect: { id: parseInt(to) } },
+          sender: { connect: { id: from } },
+          receiver: { connect: { id: to } },
           type: "audio",
         },
       });
@@ -124,7 +123,7 @@ export const addAudioMessage = async (req, res, next) => {
 
 export const getInitialContactswithMessages = async (req, res, next) => {
   try {
-    const userId = parseInt(req.params.from);
+    const userId = req.params.from;
     const prisma = getPrismaInstance();
     const user = await prisma.user.findUnique({
       where: { id: userId },
@@ -203,7 +202,6 @@ export const getInitialContactswithMessages = async (req, res, next) => {
         },
       });
     }
-
     return res
       .status(200)
       .json({

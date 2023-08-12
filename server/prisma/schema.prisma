@@ -6,13 +6,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "mongodb"
+  url = env("MONGODB_PRISMA_URL")
 }
 
 model User {
-  id    Int @id @default(autoincrement())
-  email String @unique
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String   @unique
   name  String
   profilePicture String @default("")
   about String @default("")
@@ -21,11 +21,11 @@ model User {
 }
 
 model Messages {
-  id Int @id @default(autoincrement())
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   sender User @relation("sentMessages",fields: [senderId], references: [id])
-  senderId Int
+  senderId String @db.ObjectId
   receiver User @relation("receivedMessages",fields: [receiverId], references: [id])
-  receiverId Int
+  receiverId String @db.ObjectId
   type String @default("text")
   message String
   messageStatus String @default("sent")
