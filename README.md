@@ -1,6 +1,8 @@
 # Whisper: Full Stack Chat Application
 
-Whisper is a feature-rich Full Stack Chat application that brings you a seamless messaging experience. Built using cutting-edge technologies like Next.js, Tailwind CSS, Socket.io, Prisma, Node.js, Express, PostgreSQL, Firebase, and more, Whisper offers real-time chat functionality, video calls, voice calls, and a plethora of other features. The integration of ZEGOCLOUD's video & voice call SDK adds an extra layer of sophistication to the app.
+Whisper is a feature-rich Full Stack Chat application that brings you a seamless messaging experience. Built using cutting-edge technologies like Next.js, Tailwind CSS, Socket.io, Prisma, Node.js, Express, MongoDB, Firebase, and more, Whisper offers real-time chat functionality, video calls, voice calls, and a plethora of other features. The integration of ZEGOCLOUD's video & voice call SDK adds an extra layer of sophistication to the app.
+
+### [Demo](https://whisper-buzz.vercel.app/)
 
 ## Features
 
