@@ -15,10 +15,10 @@ function onboarding() {
   const [about, setAbout] = useState("");
   const [image, setImage] = useState("/default_avatar.png");
 
-  useEffect(() => {
-    if(!newUser && !userInfo?.email) router.push("/login");
-    else if(!newUser && userInfo?.email) router.push("/");
-  },[newUser, userInfo, router]);
+  // useEffect(() => {
+  //   if(!newUser && !userInfo?.email) router.push("/login");
+  //   else if(!newUser && userInfo?.email) router.push("/");
+  // },[newUser, userInfo, router]);
 
   const onboardHandler = async () => {
     if(validateDetails()) {
@@ -53,27 +53,29 @@ function onboarding() {
   }
 
   return (
-    <div className="bg-panel-header-background h-screen w-screen text-white flex flex-col items-center justify-center">
+    <div className="bg-[#0D0D0D] h-screen w-screen text-white flex items-center justify-around px-16">
       <div className="flex items-center justify-center gap-2">
-        <Image src="/whatsapp.gif" alt="whisper" width={200} height={200} />
-        <h1 className="font-sans text-3xl">Whisper</h1>
+        <Image src="/whisper.svg" alt="whisper" width={300} height={300} />
+        <h1 className="font-title text-5xl">Whisper</h1>
       </div>
-      <h2 className="text-2xl">Create your Profile</h2>
-      <div className="flex gap-6 mt-5">
-        <div className="flex flex-col items-center justify-center mt-5 gap-4">
-          <Input name="Display Name" state={name} setState={setName} label />
-          <Input name="About" state={about} setState={setAbout} label />
-          <div className="flex items-center justify-center">
-            <button
-              className="flex items-center justify-center gap-5 bg-search-input-container-background p-3 rounded-lg"
-              onClick={onboardHandler}
-            >
-              Create Profile
-            </button>
+      <div>
+        <h2 className="text-2xl">Create your Profile</h2>
+        <div className="flex gap-8 mt-5">
+          <div className="flex flex-col items-center justify-center mt-5 gap-6">
+            <Input name="Display Name" state={name} setState={setName} label />
+            <Input name="About" state={about} setState={setAbout} label />
+            <div className="flex mt-4 items-center justify-center">
+              <button
+                className="flex items-center justify-center gap-6 bg-search-input-container-background p-3 rounded-lg"
+                onClick={onboardHandler}
+              >
+                Create Profile
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="mt-6">
-          <Avatar type="xl" image={image} setImage={setImage} />
+          <div className="mt-8">
+            <Avatar type="xl" image={image} setImage={setImage} />
+          </div>
         </div>
       </div>
     </div>

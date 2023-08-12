@@ -86,17 +86,19 @@ function VoiceMessage({ message }) {
 
   return (
     <div
-      className={`flex items-center gap-5 text-white px-4 pr-2 py-4 text-sm rounded-md ${
-        message.senderId === currentChat.id
-          ? "bg-incoming-background"
-          : "bg-outgoing-background"
+      className={`flex items-center gap-5 text-white px-4 pr-2 py-4 text-sm rounded-lg ${
+        message.senderId !== currentChat.id
+          ? "bg-[#1A66FF] rounded-br-none"
+          : "bg-[#1B1B1B] rounded-bl-none"
       }`}
     >
       <div>
         <Avatar
           type="lg"
           image={
-            message.senderId === userInfo?.id ? userInfo.profileImage : currentChat.profilePicture
+            message.senderId === userInfo?.id
+              ? userInfo.profileImage
+              : currentChat.profilePicture
           }
         />
       </div>
@@ -109,7 +111,7 @@ function VoiceMessage({ message }) {
       </div>
       <div className="relative">
         <div className="w-60" ref={waveformRef} />
-        <div className="text-bubble-meta text-[11px] pt-1 flex justify-between absolute bottom-[-22px] w-full">
+        <div className="text-white text-[11px] pt-1 flex justify-between absolute bottom-[-22px] w-full">
           <span>{formatTime(isPlaying ? currentPlayback : totalDuration)}</span>
           <div className="flex gap-1">
             <span>{calculateTime(message.createdAt)}</span>

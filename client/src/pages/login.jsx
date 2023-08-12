@@ -57,12 +57,15 @@ function login() {
     }
   }
   return (
-    <div className="flex justify-center items-center bg-panel-header-background h-screen w-screen flex-col gap-6">
+    <div className="flex justify-center items-center bg-[#0D0D0D] h-screen w-screen flex-col gap-6">
       <div className="flex items-center justify-center gap-2 text-white">
-        <Image src="/whatsapp.gif" alt="whisper" width={300} height={300} />
-        <h1 className="font-sans text-6xl">Whisper</h1>
+        <Image src="/whisper.svg" alt="whisper" width={300} height={300} />
+        <h1 className="font-title text-6xl">Whisper</h1>
       </div>
-      <button onClick={handleLogin} className="flex items-center justify-center gap-5 bg-search-input-container-background p-3 shadow-lg rounded-lg">
+      <button
+        onClick={handleLogin}
+        className="flex items-center justify-center gap-5 bg-search-input-container-background p-3 shadow-lg rounded-lg"
+      >
         <FcGoogle className="text-4xl" />
         <span className="text-white text-2xl"> Login with Google</span>
       </button>

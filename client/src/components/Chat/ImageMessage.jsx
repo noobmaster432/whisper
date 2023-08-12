@@ -10,9 +10,9 @@ function ImageMessage({ message }) {
   return (
     <div
       className={`p-1 rounded-lg ${
-        message.senderId === currentChat.id
-          ? "bg-incoming-background"
-          : "bg-outgoing-background"
+        message.senderId !== currentChat.id
+          ? "bg-[#1A66FF] rounded-br-none"
+          : "bg-[#1B1B1B] rounded-bl-none"
       }`}
     >
       <div className="relative">
@@ -24,10 +24,10 @@ function ImageMessage({ message }) {
           width={300}
         />
         <div className="absolute bottom-1 right-1 flex items-end gap-1">
-          <span className="text-bubble-meta text-[9px] pt-1 min-w-fit">
+          <span className="text-white text-[9px] pt-1 min-w-fit">
             {calculateTime(message.createdAt)}
           </span>
-          <span className="text-bubble-meta">
+          <span className="text-white">
             {message.senderId === userInfo?.id && (
               <MessageStatus status={message.messageStatus} />
             )}

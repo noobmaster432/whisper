@@ -55,26 +55,47 @@ function ChatHeader() {
   }
 
   return (
-    <div className="h-16 px-4 py-3 flex justify-between items-center bg-panel-header-background z-10">
-      <div className="flex items-center justify-center gap-4">
-        <Avatar type="sm" image={currentChat?.profilePicture} />
-        <div className="flex flex-col">
-          <span className="text-primary-strong">{currentChat?.name}</span>
-          <span className="text-secondary text-sm">
-            {onlineUsers.includes(currentChat.id) ? "Online" : "Offline"}
-          </span>
+    <>
+      <div className="h-16 mt-1 px-4 py-3 flex justify-between items-center bg-[#0D0D0D] z-10">
+        <div className="flex items-center justify-center gap-4">
+          <Avatar type="sm" image={currentChat?.profilePicture} />
+          <div className="flex flex-col">
+            <span className="text-primary-strong">{currentChat?.name}</span>
+            <span className="text-secondary text-sm">
+              {onlineUsers.includes(currentChat.id) ? "Online" : "Offline"}
+            </span>
+          </div>
+        </div>
+        <div className="flex gap-6">
+          <MdCall
+            onClick={handleVoiceCall}
+            className="text-blue-600 text-xl cursor-pointer"
+          />
+          <IoVideocam
+            onClick={handleVideoCall}
+            className="text-blue-600 text-xl cursor-pointer"
+          />
+          <BiSearchAlt2
+            className="text-blue-600 text-xl cursor-pointer"
+            onClick={() => dispatch({ type: reducerCases.SET_MESSAGE_SEARCH })}
+          />
+          <BsThreeDotsVertical
+            onClick={(e) => showContextMenu(e)}
+            id="context-opener"
+            className="text-blue-600 text-xl cursor-pointer"
+          />
+          {contextVisible && (
+            <ContextMenu
+              options={contextMenuOptions}
+              coordinates={contextCoordinates}
+              contextMenu={contextVisible}
+              setContextMenu={setContextVisible}
+            />
+          )}
         </div>
       </div>
-      <div className="flex gap-6">
-        <MdCall onClick={handleVoiceCall} className="text-panel-header-icon text-xl cursor-pointer" />
-        <IoVideocam onClick={handleVideoCall} className="text-panel-header-icon text-xl cursor-pointer" />
-        <BiSearchAlt2 className="text-panel-header-icon text-xl cursor-pointer" onClick={() => dispatch({ type: reducerCases.SET_MESSAGE_SEARCH })} />
-        <BsThreeDotsVertical onClick={(e) => showContextMenu(e)} id="context-opener" className="text-panel-header-icon text-xl cursor-pointer" />
-        {contextVisible && (
-          <ContextMenu options={contextMenuOptions} coordinates={contextCoordinates} contextMenu={contextVisible} setContextMenu={setContextVisible} />
-        )}
-      </div>
-    </div>
+      <div className="w-[98%] mx-3 my-2 h-[2px] bg-[#FFFFFF] opacity-25" />
+    </>
   );
 }
 

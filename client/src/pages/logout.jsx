@@ -16,7 +16,7 @@ function logout() {
     router.push("/login");
   },[socket]);
 
-  return <div className="bg-conversation-panel-background"></div>;
+  return <div className="bg-[#0D0D0D]"></div>;
 }
 
 export default logout;

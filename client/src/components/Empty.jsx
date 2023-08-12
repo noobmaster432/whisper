@@ -3,8 +3,8 @@ import React from "react";
 
 function Empty() {
   return (
-    <div className="border-conversation-border border-l w-full bg-panel-header-background flex flex-col justify-center items-center h-screen border-b-4 border-b-icon-green">
-      <Image src="/whatsapp.gif" alt="whisper" width={300} height={300} />
+    <div className="border-[#FFFFFF] border-opacity-20 border-l w-full bg-[#0D0D0D] flex flex-col justify-center items-center h-screen border-b-4 border-b-[#FFFFFF]">
+      <Image src="/whisper.svg" alt="whisper" width={300} height={300} />
     </div>
   );
 }

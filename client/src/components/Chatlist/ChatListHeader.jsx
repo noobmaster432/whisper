@@ -43,7 +43,7 @@ function ChatListHeader() {
       <div className="flex gap-6">
         <BsFillChatLeftTextFill
           title="New Chat"
-          className="text-panel-header-icon text-xl cursor-pointer"
+          className="text-blue-600 text-xl cursor-pointer"
           onClick={handleContactsPage}
         />
         <>
@@ -51,7 +51,7 @@ function ChatListHeader() {
             onClick={showContextMenu}
             id="context-opener"
             title="Menu"
-            className="text-panel-header-icon text-xl cursor-pointer"
+            className="text-blue-600 text-xl cursor-pointer"
           />
           {contextVisible && (
             <ContextMenu

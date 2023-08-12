@@ -25,16 +25,14 @@ function List() {
   }, [userInfo]);
 
   return (
-    <div className="bg-search-input-container-background flex-auto overflow-auto max-h-full custom-scrollbar">
-      {filteredContacts.length > 0 ? (
-          filteredContacts.map((contact) => (
+    <div className="bg-[#0D0D0D] flex-auto overflow-auto max-h-full custom-scrollbar">
+      {filteredContacts.length > 0
+        ? filteredContacts.map((contact) => (
             <ChatLIstItem data={contact} key={contact.id} />
           ))
-        ) : (
-        userContacts.map((contact) => (
-          <ChatLIstItem data={contact} key={contact.id} />
-        ))
-      )}
+        : userContacts.map((contact) => (
+            <ChatLIstItem data={contact} key={contact.id} />
+          ))}
     </div>
   );
 }

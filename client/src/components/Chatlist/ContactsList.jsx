@@ -51,9 +51,9 @@ function ContactsList() {
         </div>
       </div>
 
-      <div className="bg-search-input-container-background h-full flex-auto overflow-auto custom-scrollbar">
+      <div className="bg-[#0D0D0D] h-full flex-auto overflow-auto custom-scrollbar">
         <div className="flex py-3 items-center gap-3 mx-4 h-14">
-          <div className="bg-panel-header-background flex items-center gap-5 px-3 py-1 rounded-lg flex-grow">
+          <div className="bg-panel-header-background flex items-center gap-5 px-3 py-1.5 rounded-lg flex-grow">
             <div>
               <BiSearchAlt2 className="text-panel-header-icon text-lg cursor-pointer" />
             </div>

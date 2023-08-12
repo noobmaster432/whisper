@@ -7,8 +7,8 @@ import { BsFilter } from "react-icons/bs";
 function SearchBar() {
   const [{ contactSearch }, dispatch] = useStateProvider();
   return (
-    <div className="bg-search-input-container-background flex py-3 pl-5 items-center gap-3 h-14">
-      <div className="bg-panel-header-background flex items-center gap-5 px-3 py-1 rounded-lg flex-grow">
+    <div className="bg-[#0D0D0D] flex py-3 pl-5 items-center gap-3 h-14">
+      <div className="bg-[#212121] flex items-center gap-5 px-3 py-1.5 rounded-lg flex-grow">
         <div>
           <BiSearchAlt2 className="text-panel-header-icon text-lg cursor-pointer" />
         </div>
