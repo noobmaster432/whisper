@@ -56,7 +56,7 @@ function ChatHeader() {
 
   return (
     <>
-      <div className="h-16 mt-1 px-4 py-3 flex justify-between items-center bg-[#0D0D0D] z-10">
+      <div className="h-16 px-4 py-3 flex justify-between items-center bg-[#0D0D0D] z-10">
         <div className="flex items-center justify-center gap-4">
           <Avatar type="sm" image={currentChat?.profilePicture} />
           <div className="flex flex-col">
@@ -94,7 +94,7 @@ function ChatHeader() {
           )}
         </div>
       </div>
-      <div className="w-[98%] mx-3 my-2 h-[2px] bg-[#FFFFFF] opacity-25" />
+      <div className="w-[98%] mx-3 h-[2px] bg-[#FFFFFF] opacity-25" />
     </>
   );
 }

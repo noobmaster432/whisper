@@ -124,7 +124,7 @@ function MessageBar() {
 
   return (
     <>
-      <div className="w-[98%] mx-3 my-1 h-[3px] bg-[#FFFFFF] opacity-25" />
+      <div className="w-[98%] mx-3 my-1 h-[1px] bg-[#FFFFFF] opacity-25" />
       <div className="bg-[#0D0D0D] h-20 px-6 flex items-center gap-6 relative">
         {!recorder && (
           <>
