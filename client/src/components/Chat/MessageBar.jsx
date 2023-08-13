@@ -124,15 +124,15 @@ function MessageBar() {
 
   return (
     <>
-      <div className="w-[98%] mx-3 my-1 h-[1px] bg-[#FFFFFF] opacity-25" />
-      <div className="bg-[#0D0D0D] h-20 px-6 flex items-center gap-6 relative">
+      {/* <div className="w-[98%] mx-3 my-1 h-[1px] bg-[#FFFFFF] opacity-25" /> */}
+      <div className="bg-[#202020] h-20 px-6 flex items-center gap-6 relative">
         {!recorder && (
           <>
-            <div className="bg-[#212121] flex w-full items-center justify-center rounded-lg py-1 px-4">
+            <div className="bg-[#3f3f3f] shadow-lg flex w-full items-center justify-center rounded-lg py-1 px-4">
               <div className="flex gap-6">
                 <BsEmojiSmile
                   title="Emoji"
-                  className="text-white text-opacity-50 text-xl cursor-pointer"
+                  className="text-white text-opacity-60 text-xl cursor-pointer"
                   id="emoji-open"
                   onClick={handleEmojiModal}
                 />
@@ -146,7 +146,7 @@ function MessageBar() {
                 )}
                 <ImAttachment
                   title="Attach file"
-                  className="text-white text-opacity-50 text-xl cursor-pointer"
+                  className="text-white text-opacity-60 text-xl cursor-pointer"
                   onClick={() => setGrabPhoto(true)}
                 />
               </div>

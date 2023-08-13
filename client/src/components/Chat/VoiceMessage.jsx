@@ -88,8 +88,8 @@ function VoiceMessage({ message }) {
     <div
       className={`flex items-center gap-5 text-white px-4 pr-2 py-4 text-sm rounded-lg ${
         message.senderId !== currentChat.id
-          ? "bg-[#1A66FF] rounded-br-none"
-          : "bg-[#1B1B1B] rounded-bl-none"
+          ? "bg-[#0078d4] rounded-br-none"
+          : "bg-[#3b3b3b] rounded-bl-none"
       }`}
     >
       <div>

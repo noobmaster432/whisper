@@ -188,7 +188,7 @@ function CaptureAudio({ hide }) {
       <div className="p-3 hover:bg-red-950 rounded-full">
         <FaTrash className="text-white cursor-pointer" onClick={() => hide()} />
       </div>
-      <div className="mx-4 py-2 px-4 text-white text-lg flex gap-3 items-center justify-center bg-[#212121] rounded-full drop-shadow-lg">
+      <div className="mx-4 py-2 px-4 text-white text-lg flex gap-3 items-center justify-center bg-[#303030] rounded-full drop-shadow-xl">
         {isRecording ? (
           <div className="text-red-500 animate-pulse w-60 text-center">
             Recording...

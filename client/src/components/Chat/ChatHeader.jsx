@@ -25,9 +25,9 @@ function ChatHeader() {
       name: "Exit",
       callback: async () => {
         setContextVisible(false);
-        dispatch({ type: reducerCases.SET_EXIT_CHAT })
-      }
-    }
+        dispatch({ type: reducerCases.SET_EXIT_CHAT });
+      },
+    },
   ];
 
   const handleVoiceCall = () => {
@@ -40,7 +40,7 @@ function ChatHeader() {
         roomId: Date.now(),
       },
     });
-  }
+  };
 
   const handleVideoCall = () => {
     dispatch({
@@ -52,50 +52,47 @@ function ChatHeader() {
         roomId: Date.now(),
       },
     });
-  }
+  };
 
   return (
-    <>
-      <div className="h-16 px-4 py-3 flex justify-between items-center bg-[#0D0D0D] z-10">
-        <div className="flex items-center justify-center gap-4">
-          <Avatar type="sm" image={currentChat?.profilePicture} />
-          <div className="flex flex-col">
-            <span className="text-primary-strong">{currentChat?.name}</span>
-            <span className="text-secondary text-sm">
-              {onlineUsers.includes(currentChat.id) ? "Online" : "Offline"}
-            </span>
-          </div>
-        </div>
-        <div className="flex gap-6">
-          <MdCall
-            onClick={handleVoiceCall}
-            className="text-blue-600 text-xl cursor-pointer"
-          />
-          <IoVideocam
-            onClick={handleVideoCall}
-            className="text-blue-600 text-xl cursor-pointer"
-          />
-          <BiSearchAlt2
-            className="text-blue-600 text-xl cursor-pointer"
-            onClick={() => dispatch({ type: reducerCases.SET_MESSAGE_SEARCH })}
-          />
-          <BsThreeDotsVertical
-            onClick={(e) => showContextMenu(e)}
-            id="context-opener"
-            className="text-blue-600 text-xl cursor-pointer"
-          />
-          {contextVisible && (
-            <ContextMenu
-              options={contextMenuOptions}
-              coordinates={contextCoordinates}
-              contextMenu={contextVisible}
-              setContextMenu={setContextVisible}
-            />
-          )}
+    <div className="h-16 px-4 py-3 flex justify-between items-center bg-[#202020] z-10">
+      <div className="flex items-center justify-center gap-4">
+        <Avatar type="sm" image={currentChat?.profilePicture} />
+        <div className="flex flex-col">
+          <span className="text-primary-strong">{currentChat?.name}</span>
+          <span className="text-secondary text-sm">
+            {onlineUsers.includes(currentChat.id) ? "Online" : "Offline"}
+          </span>
         </div>
       </div>
-      <div className="w-[98%] mx-3 h-[2px] bg-[#FFFFFF] opacity-25" />
-    </>
+      <div className="flex gap-6">
+        <MdCall
+          onClick={handleVoiceCall}
+          className="text-blue-600 text-xl cursor-pointer"
+        />
+        <IoVideocam
+          onClick={handleVideoCall}
+          className="text-blue-600 text-xl cursor-pointer"
+        />
+        <BiSearchAlt2
+          className="text-blue-600 text-xl cursor-pointer"
+          onClick={() => dispatch({ type: reducerCases.SET_MESSAGE_SEARCH })}
+        />
+        <BsThreeDotsVertical
+          onClick={(e) => showContextMenu(e)}
+          id="context-opener"
+          className="text-blue-600 text-xl cursor-pointer"
+        />
+        {contextVisible && (
+          <ContextMenu
+            options={contextMenuOptions}
+            coordinates={contextCoordinates}
+            contextMenu={contextVisible}
+            setContextMenu={setContextVisible}
+          />
+        )}
+      </div>
+    </div>
   );
 }
 

@@ -20,8 +20,8 @@ function SearchMessages() {
   },[searchTerm]);
 
   return (
-    <div className="border-[#FFFFFF] border-opacity-20 border-l-2 w-full bg-[#0D0D0D] flex flex-col z-10 max-h-screen">
-      <div className="h-16 px-4 py-5 flex gap-10 items-center bg-[#0D0D0D] text-primary-strong">
+    <div className="border-[#FFFFFF] border-opacity-20 border-l-2 w-full bg-[#2d2d2d] flex flex-col z-10 max-h-screen">
+      <div className="h-16 px-4 py-5 flex gap-10 items-center bg-[#202020] text-primary-strong">
         <IoClose
           className="cursor-pointer text-icon-lighter text-2xl"
           onClick={() => dispatch({ type: reducerCases.SET_MESSAGE_SEARCH })}
@@ -59,7 +59,7 @@ function SearchMessages() {
           )}
           <div className="flex flex-col h-full w-full">
             {searchedMessages.map((message) => (
-              <div className="flex cursor-pointer flex-col justify-center hover:bg-[#171515] w-full px-5 border-b-[0.1px] border-[#FFFFFF] border-opacity-20 py-5">
+              <div className="flex cursor-pointer flex-col justify-center hover:bg-[#3f3f3f] w-full px-5 border-b-[0.1px] border-[#FFFFFF] border-opacity-10 py-5">
                 <div className="text-sm text-secondary">
                   {calculateTime(message.createdAt)}
                 </div>

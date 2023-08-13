@@ -15,10 +15,10 @@ function onboarding() {
   const [about, setAbout] = useState("");
   const [image, setImage] = useState("/default_avatar.png");
 
-  // useEffect(() => {
-  //   if(!newUser && !userInfo?.email) router.push("/login");
-  //   else if(!newUser && userInfo?.email) router.push("/");
-  // },[newUser, userInfo, router]);
+  useEffect(() => {
+    if(!newUser && !userInfo?.email) router.push("/login");
+    else if(!newUser && userInfo?.email) router.push("/");
+  },[newUser, userInfo, router]);
 
   const onboardHandler = async () => {
     if(validateDetails()) {
@@ -53,7 +53,7 @@ function onboarding() {
   }
 
   return (
-    <div className="bg-[#0D0D0D] h-screen w-screen text-white flex items-center justify-around px-16">
+    <div className="bg-[#121212] h-screen w-screen text-white flex items-center justify-around px-16">
       <div className="flex items-center justify-center gap-2">
         <Image src="/whisper.svg" alt="whisper" width={300} height={300} />
         <h1 className="font-title text-5xl">Whisper</h1>
@@ -66,7 +66,7 @@ function onboarding() {
             <Input name="About" state={about} setState={setAbout} label />
             <div className="flex mt-4 items-center justify-center">
               <button
-                className="flex items-center justify-center gap-6 bg-search-input-container-background p-3 rounded-lg"
+                className="flex items-center justify-center gap-6 bg-search-input-container-background font-semibold p-3 rounded-lg shadow-lg"
                 onClick={onboardHandler}
               >
                 Create Profile

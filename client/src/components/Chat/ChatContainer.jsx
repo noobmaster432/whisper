@@ -22,9 +22,9 @@ function ChatContainer() {
 
   return (
     <div className="h-[80vh] w-full relative flex-grow overflow-auto custom-scrollbar">
-      <div className="bg-[#0D0D0D] bg-transparent bg-fixed h-full w-full fixed left-0 top-0 z-0"></div>
+      <div className="bg-[#2d2d2d] bg-transparent bg-fixed h-full w-full fixed left-0 top-0 z-0"></div>
       <div className="mx-10 my-6 relative bottom-0 z-40 left-0">
-        <div className="flex w-full"> 
+        <div className="flex w-full">
           <div className="flex flex-col justify-end w-full gap-1 overflow-auto">
             {messages.map((message) => (
               <div
@@ -39,8 +39,8 @@ function ChatContainer() {
                   <div
                     className={`flex text-white px-2.5 py-[6px] text-sm rounded-lg items-center max-w-[45%] ${
                       message.senderId === userInfo?.id
-                        ? "bg-[#1A66FF] rounded-br-none"
-                        : "bg-[#1B1B1B] rounded-bl-none"
+                        ? "bg-[#0078d4] rounded-br-none"
+                        : "bg-[#3b3b3b] rounded-bl-none"
                     } gap-2`}
                   >
                     <span className="break-all">{message.message}</span>

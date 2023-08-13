@@ -99,7 +99,7 @@ function List() {
   }, [userInfo]);
 
   return (
-    <div className="bg-[#0D0D0D] flex-auto overflow-auto max-h-full custom-scrollbar">
+    <div className="bg-[#202020] flex-auto overflow-auto max-h-full custom-scrollbar">
       {isLoading ? (
         <Loading />
       ) : filteredContacts.length > 0 ? (
